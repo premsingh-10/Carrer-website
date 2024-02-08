@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from database import load_jobs_from_db, load_job_from_db,add_application_to_db
+from database import load_jobs_from_db, load_job_from_db,add_application_to_db,adminData
 
 app = Flask(__name__)
 
@@ -8,6 +8,11 @@ app = Flask(__name__)
 def hello_World():
   jobs = load_jobs_from_db()
   return render_template('home.html', jobs=jobs, company_name='Job Portal')
+
+@app.route("/admindata")
+def adminDataRender():
+  application = adminData()
+  return render_template('admin.html', application=application)
 
 
 @app.route("/api/jobs")

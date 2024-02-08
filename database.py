@@ -55,3 +55,14 @@ def add_application_to_db(job_id, data):
       query = query.bindparams(**params)
 
       conn.execute(query)
+
+
+
+def adminData():
+  with engine.connect() as conn:
+    query = text("select * from application")
+    result = conn.execute(query)
+    application = []
+    for row in result.all():
+      application.append(row._asdict())
+    return application
