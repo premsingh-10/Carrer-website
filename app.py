@@ -11,8 +11,13 @@ def hello_World():
 
 @app.route("/admindata")
 def adminDataRender():
-  application = adminData()
-  return render_template('admin.html', application=application)
+    applications = adminData()
+    return render_template('admin.html', applications=applications,)
+
+# @app.route("/admindata/auth")
+# def adminAuthRender():
+#     add_application_to_db = adminAuthRender()
+#     return render_template('adminauth.html')
 
 
 @app.route("/api/jobs")

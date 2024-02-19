@@ -1,34 +1,26 @@
 <div class="border-bottom row" style="margin-bottom:16px;padding-bottom:8px;">
   <div class="col-10">
-    <h4 
-      style="color:rgb(120,120,120); margin-bottom:4px;">
-      {{application['full_name']}}
+    <h4 style="color:rgb(120,120,120); margin-bottom:4px;">
+      {{ application['full_name'] }}
     </h4>
     <div>
-      <b>email</b> {{application['email']}}
+      <b>email</b> {{ application['email'] }}
     </div>
-    {% if 'linkedin_url' in application %}
-    <div>
-      <b>Linkedin</b> {{['linkedin_url']}}
-    </div>
-    {% endif %}
     {% if 'education' in application %}
     <div>
-      <b>Linkedin</b> {{['education']}}
+      <b>Education:</b> {{application['education']}}
     </div>
     {% endif %}
     {% if 'work_experience' in application %}
     <div>
-      <b>Linkedin</b> {{['work_experience']}}
+      <b>Experience:</b> {{application['work_experience']}}
     </div>
     {% endif %}
-    {% if 'resume_url' in application %}
-    <div>
-      <b>Linkedin</b> {{['resume_url']}}
-    </div>
-    {% endif %}
-  </div>
-  
-  </div>
 
+    {% if 'created_at' in application %}
+    <div>
+      <b>Submitted Time</b> {{application['created_at']}}
+    </div>
+    {% endif %}
+  </div>
 </div>

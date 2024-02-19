@@ -2,8 +2,9 @@ from sqlalchemy import create_engine,text
 from sqlalchemy import text
 import os
 
+# export DB_CONNECTION_STRING="mysql+pymysql://msoo10ziruq0f80en0wf:pscale_pw_z1diBkSynlj5s4v1KvB2FzlMeP7iQP1f5G27zEZ01Vd@aws.connect.psdb.cloud/careerproject?charset=utf8mb4"
+db_connection_string = "mysql+pymysql://msoo10ziruq0f80en0wf:pscale_pw_z1diBkSynlj5s4v1KvB2FzlMeP7iQP1f5G27zEZ01Vd@aws.connect.psdb.cloud/careerproject?charset=utf8mb4"
 
-db_connection_string = os.environ['DB_CONNECTION_STRING']
 
 engine = create_engine(
 db_connection_string, 
@@ -59,10 +60,7 @@ def add_application_to_db(job_id, data):
 
 
 def adminData():
-  with engine.connect() as conn:
-    query = text("select * from application")
-    result = conn.execute(query)
-    application = []
-    for row in result.all():
-      application.append(row._asdict())
-    return application
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM applications,jobs"))
+        applications = [row._asdict() for row in result.all()]
+    return applications
